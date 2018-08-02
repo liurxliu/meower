@@ -54,6 +54,20 @@
 
 [[projects]]
   branch = "master"
+  digest = "1:dbfbef1e00e1e6e72ac744a1dcf5634205d9386e80f3cc1ca1cdb34b3ddd6377"
+  name = "github.com/liurxliu/meower"
+  packages = [
+    "db",
+    "event",
+    "schema",
+    "search",
+    "util",
+  ]
+  pruneopts = "UT"
+  revision = "35378655560b20ff00d812f6ed731e01efecd858"
+
+[[projects]]
+  branch = "master"
   digest = "1:aa3d8d42865c42626b5c1add193692d045b3188b1479f0a0a88690d21fe20083"
   name = "github.com/mailru/easyjson"
   packages = [
@@ -113,6 +127,14 @@
   revision = "112f929a3020abfcd06b77c963ec919130796a35"
   version = "1.0.1"
 
+[[projects]]
+  digest = "1:ac9b9680c595e5e4344341f7ccea0aaf2e858648711b41a4d68eddcb8fd769f2"
+  name = "github.com/tinrab/retry"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "e979fd9b1d7980d567dd50fc993d06f1fb17eac3"
+  version = "v1.0.0"
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
@@ -122,9 +144,15 @@
     "github.com/gorilla/websocket",
     "github.com/kelseyhightower/envconfig",
     "github.com/lib/pq",
+    "github.com/liurxliu/meower/db",
+    "github.com/liurxliu/meower/event",
+    "github.com/liurxliu/meower/schema",
+    "github.com/liurxliu/meower/search",
+    "github.com/liurxliu/meower/util",
     "github.com/nats-io/go-nats",
     "github.com/olivere/elastic",
     "github.com/segmentio/ksuid",
+    "github.com/tinrab/retry",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1
