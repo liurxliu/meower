@@ -54,7 +54,7 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:dbfbef1e00e1e6e72ac744a1dcf5634205d9386e80f3cc1ca1cdb34b3ddd6377"
+  digest = "1:119069409f07d5d24f94571dab5136120a405723fb79d95a821127ca2aee9723"
   name = "github.com/liurxliu/meower"
   packages = [
     "db",
@@ -64,7 +64,7 @@
     "util",
   ]
   pruneopts = "UT"
-  revision = "35378655560b20ff00d812f6ed731e01efecd858"
+  revision = "1460d52a43fb393dc9730290e15839b5b94c0c89"
 
 [[projects]]
   branch = "master"

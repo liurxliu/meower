@@ -10,7 +10,7 @@ import (
 )
 
 var upgrader = websocket.Upgrader{
-	CheckOrigin: func(r *http.REquest) bool { return true },
+	CheckOrigin: func(r *http.Request) bool { return true },
 }
 
 type Hub struct {
@@ -37,7 +37,7 @@ func (hub *Hub) run() {
 		case client := <-hub.register:
 			hub.onConnect(client)
 		case client := <-hub.unregister:
-			hub.OnDisconnect(client)
+			hub.onDisconnect(client)
 		}
 	}
 }
@@ -65,7 +65,7 @@ func (hub *Hub) handleWebSocket(w http.ResponseWriter, r *http.Request) {
 }
 
 func (hub *Hub) onConnect(client *Client) {
-	log.Println("client connected: ", client.socke.RemoteAddr())
+	log.Println("client connected: ", client.socket.RemoteAddr())
 
 	hub.mutex.Lock()
 	defer hub.mutex.Unlock()

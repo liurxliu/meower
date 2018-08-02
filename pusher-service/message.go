@@ -5,7 +5,7 @@ import (
 )
 
 const (
-	KindMeowCreated = itoa + 1
+	KindMeowCreated = iota + 1
 )
 
 type MeowCreatedMessage struct {

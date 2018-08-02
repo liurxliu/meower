@@ -13,7 +13,7 @@ import (
 	"github.com/liurxliu/meower/util"
 )
 
-func onMeowCreated(m event.MeowCreatedMessage) {
+func onMeowCreated(m event.MeowCreateMessage) {
 	meow := schema.Meow{
 		ID:        m.ID,
 		Body:      m.Body,
@@ -46,7 +46,7 @@ func searchMeowsHandler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	if len(takeStr) != 0 {
-		take, err = strconv(takeStr, 10, 64)
+		take, err = strconv.ParseUint(takeStr, 10, 64)
 		if err != nil {
 			util.ResponseError(w, http.StatusBadRequest, "Invalid take parameter")
 			return

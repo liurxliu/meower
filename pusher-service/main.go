@@ -29,7 +29,7 @@ func main() {
 			return err
 		}
 
-		err = es.OnMeowCreated(func(m event.MeowCreatedMessage) {
+		err = es.OnMeowCreated(func(m event.MeowCreateMessage) {
 			log.Printf("Meow received: %v\n", m)
 			hub.broadcast(newMeowCreatedMessage(m.ID, m.Body, m.CreatedAt), nil)
 		})

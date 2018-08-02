@@ -61,7 +61,7 @@ func main() {
 		err = event.OnMeowCreated(onMeowCreated)
 		if err != nil {
 			log.Println(err)
-			return
+			return err
 		}
 		event.SetEventStore(es)
 		return nil
