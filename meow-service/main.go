@@ -11,7 +11,7 @@ import (
 	"github.com/kelseyhightower/envconfig"
 	"github.com/liurxliu/meower/db"
 	"github.com/liurxliu/meower/event"
-	"github.com/liurxliu/meower/retry"
+	"github.com/tinrab/retry"
 )
 
 type Config struct {
