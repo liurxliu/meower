@@ -39,7 +39,7 @@ func (r *ElasticRepository) InsertMeow(ctx context.Context, meow schema.Meow) er
 	return err
 }
 
-func (r *ElasticRepository) SearchMeows(ctx contex.Contex, query string, skip uint64, take uint64) ([]schema.Meow, error) {
+func (r *ElasticRepository) SearchMeows(ctx context.Context, query string, skip uint64, take uint64) ([]schema.Meow, error) {
 	result, err := r.client.Search().
 		Index("meows").
 		Query(
@@ -58,7 +58,7 @@ func (r *ElasticRepository) SearchMeows(ctx contex.Contex, query string, skip ui
 	for _, hit := range result.Hits.Hits {
 		var meow schema.Meow
 		if err = json.Unmarshal(*hit.Source, &meow); err != nil {
-			log.Prinltn(err)
+			log.Println(err)
 		}
 		meows = append(meows, meow)
 	}
