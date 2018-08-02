@@ -6,11 +6,11 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/liurxliu/meower/db"
+	"github.com/liurxliu/meower/event"
+	"github.com/liurxliu/meower/schema"
+	"github.com/liurxliu/meower/util"
 	"github.com/segmentio/ksuid"
-	"meower/db"
-	"meower/event"
-	"meower/schema"
-	"meower/util"
 )
 
 func createMeowHandler(w http.ResponseWriter, r *http.Request) {

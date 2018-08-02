@@ -8,10 +8,10 @@ import (
 
 	"github.com/gorilla/mux"
 	"github.com/kelseyhightower/envconfig"
-	"meower/db"
-	"meower/event"
-	"meower/retry"
-	"meower/search"
+	"github.com/liurxliu/meower/db"
+	"github.com/liurxliu/meower/event"
+	"github.com/liurxliu/meower/retry"
+	"github.com/liurxliu/meower/search"
 )
 
 type Config struct {

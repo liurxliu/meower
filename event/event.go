@@ -1,7 +1,7 @@
 package event
 
 import (
-	"meower/schema"
+	"github.com/liurxliu/meower/schema"
 )
 
 type EventStore interface {

@@ -1,7 +1,7 @@
 package event
 
 import (
-	"time"
+	"github.com/liurxliu/time"
 )
 
 type Message interface {

@@ -3,7 +3,7 @@ package db
 import (
 	"context"
 
-	"meower/schema"
+	"github.com/liurxliu/meower/schema"
 )
 
 type Repository interface {

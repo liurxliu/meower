@@ -5,7 +5,7 @@ import (
 	"database/sql"
 
 	_ "github.com/lib/pq"
-	"meower/schema"
+	"github.com/liurxliu/meower/schema"
 )
 
 type PostgresRepository struct {

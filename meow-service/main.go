@@ -9,9 +9,9 @@ import (
 	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"github.com/kelseyhightower/envconfig"
-	"meower/db"
-	"meower/event"
-	"meower/retry"
+	"github.com/liurxliu/meower/db"
+	"github.com/liurxliu/meower/event"
+	"github.com/liurxliu/meower/retry"
 )
 
 type Config struct {
