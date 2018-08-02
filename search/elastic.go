@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"log"
 
-	"github.com/olivere/elastic"
 	"github.com/liurxliu/meower/schema"
+	"github.com/olivere/elastic"
 )
 
 type ElasticRepository struct {
@@ -16,7 +16,7 @@ type ElasticRepository struct {
 func NewElastic(url string) (*ElasticRepository, error) {
 	client, err := elastic.NewClient(
 		elastic.SetURL(url),
-		elastic.SetSniff(false)
+		elastic.SetSniff(false),
 	)
 	if err != nil {
 		return nil, err
@@ -25,7 +25,7 @@ func NewElastic(url string) (*ElasticRepository, error) {
 }
 
 func (r *ElasticRepository) Close() {
-	
+
 }
 
 func (r *ElasticRepository) InsertMeow(ctx context.Context, meow schema.Meow) error {
@@ -36,32 +36,31 @@ func (r *ElasticRepository) InsertMeow(ctx context.Context, meow schema.Meow) er
 		BodyJson(meow).
 		Refresh("wait_for").
 		Do(ctx)
-		return err
+	return err
 }
 
-func (r *ElasticRepository)	SearchMeows(ctx contex.Contex, query string, skip uint64, take uint64) ([]schema.Meow, error) {
+func (r *ElasticRepository) SearchMeows(ctx contex.Contex, query string, skip uint64, take uint64) ([]schema.Meow, error) {
 	result, err := r.client.Search().
 		Index("meows").
 		Query(
 			elastic.NewMultiMatchQuery(query, "body").
-			Fuzziness("3").
-			PrefixLength(1).
-			CutoffFrequency(0.0001),
+				Fuzziness("3").
+				PrefixLength(1).
+				CutoffFrequency(0.0001),
 		).
 		From(int(skip)).
 		Size(int(take)).
 		Do(ctx)
-		if err != nil {
-			return nil, err
+	if err != nil {
+		return nil, err
+	}
+	meows := []schema.Meow{}
+	for _, hit := range result.Hits.Hits {
+		var meow schema.Meow
+		if err = json.Unmarshal(*hit.Source, &meow); err != nil {
+			log.Prinltn(err)
 		}
-		meows := []schema.Meow{}
-		for _, hit := range result.Hits.Hits {
-			var meow schema.Meow
-			if err = json.Unmarshal(*hit.Source, &meow); err != nil {
-				log.Prinltn(err)
-			}
-			meows = append(meows, meow)
-		}
-		return meows, nil
+		meows = append(meows, meow)
+	}
+	return meows, nil
 }
-

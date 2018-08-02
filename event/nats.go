@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"encoding/gob"
 
-	"github.com/nats-io/go-nats"
 	"github.com/liurxliu/meower/schema"
+	"github.com/nats-io/go-nats"
 )
 
 type NatsEventStore struct {
@@ -33,7 +33,7 @@ func (e *NatsEventStore) Close() {
 }
 
 func (e *NatsEventStore) PublishMeowCreated(meow schema.Meow) error {
-	m := MeowCreatedMessage{meow.ID, meow.Body, meow.CreatedAt}
+	m := MeowCreateMessage{meow.ID, meow.Body, meow.CreatedAt}
 	data, err := e.writeMessage(&m)
 	if err != nil {
 		return err
@@ -47,7 +47,7 @@ func (mq *NatsEventStore) writeMessage(m Message) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	return b.Bytes().nil
+	return b.Bytes(), nil
 }
 
 func (e *NatsEventStore) OnMeowCreated(f func(MeowCreateMessage)) (err error) {
